@@ -15,10 +15,15 @@ ${SEARCH_VALUE}             Zebrunner
 SETUP AND OPEN BROWSER
     [Documentation]     Setup and open browser
     ############################################################################################
-    ${options} =                    EVALUATE            selenium.webdriver.[ChromeOptions(), EdgeOptions(), FirefoxOptions()]
-    ${options.platform_name} =      SET VARIABLE        linux[...]
-    ${options.browser_version} =    SET VARIABLE        109.0[108.0, 107.0]
-    CALL METHOD     ${options}      set_capability      enableVideo     true[false]
+#    ${options} =                    EVALUATE            selenium.webdriver.[ChromeOptions(), EdgeOptions(), FirefoxOptions()]
+#    ${options.platform_name} =      SET VARIABLE        linux[...]
+#    ${options.browser_version} =    SET VARIABLE        109.0[108.0, 107.0]
+#    CALL METHOD     ${options}      set_capability      enableVideo     true[false]
+
+    ${options} =                    EVALUATE            selenium.webdriver.ChromeOptions()
+    ${options.platform_name} =      SET VARIABLE        linux
+    ${options.browser_version} =    SET VARIABLE        latest
+    CALL METHOD     ${options}      set_capability      enableVideo     true
     ############################################################################################
     ${browser_name} =       SET VARIABLE    ${options.default_capabilities.get("browserName")}
     RUN KEYWORD IF          '${browser_name}' == 'MicrosoftEdge'      ${browser_name} = SET VARIABLE      edge
