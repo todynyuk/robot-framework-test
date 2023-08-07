@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation       Import all necessary libraries
 Library             SeleniumLibrary
-Library             robotframework_zebrunner.ZebrunnerLib
+#Library             robotframework_zebrunner.ZebrunnerLib
 Library             ../site-packages/robot/libraries/OperatingSystem.py
 
 
@@ -21,6 +21,7 @@ SETUP AND OPEN BROWSER
 #    CALL METHOD     ${options}      set_capability      enableVideo     true[false]
 
     ${options} =                    EVALUATE            selenium.webdriver.ChromeOptions()
+#    ${options} =                    EVALUATE            selenium.webdriver.FirefoxOptions()
     ${options.platform_name} =      SET VARIABLE        linux
     ${options.browser_version} =    SET VARIABLE        latest
     CALL METHOD     ${options}      set_capability      enableVideo     true
