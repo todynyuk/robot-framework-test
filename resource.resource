@@ -1,7 +1,9 @@
 *** Settings ***
 Documentation       Import all necessary libraries
 Library             SeleniumLibrary
-#Library             robotframework_zebrunner.ZebrunnerLib
+Library           OperatingSystem
+Library           Screenshot
+Library             robotframework_zebrunner.ZebrunnerLib
 Library             ../site-packages/robot/libraries/OperatingSystem.py
 
 
@@ -43,4 +45,6 @@ DELETE COOKIES AND CLOSE BROWSER
 TAKE A SCREENSHOT
     [Documentation]     Take a screenshot
     CAPTURE PAGE SCREENSHOT     filename=screenshot.png
-    ATTACH TEST SCREENSHOT      path=screenshot.png
+#    ATTACH TEST SCREENSHOT      path=screenshot.png
+    capture page screenshot      path=screenshot.png
+
